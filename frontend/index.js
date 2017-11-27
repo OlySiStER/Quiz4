@@ -16,6 +16,7 @@ function loadAllPost() {
     .then(function (response) {
         $.get('post.mst', function(template) {
             for(i=0; i<response.data.length; i++){
+                response.data[i].create_date = moment().format('LLL');
                 var rendered = Mustache.render(template, response.data[i]);
                 $('#posts').append(rendered);
             }
@@ -41,6 +42,7 @@ function loadPostByUser() {
     .then(function (response) {
         $.get('post.mst', function(template) {
             for(i=0; i<response.data.length; i++){
+                response.data[i].create_date = moment().format('LLL');
                 var rendered = Mustache.render(template, response.data[i]);
                 $('#posts').append(rendered);
             }
